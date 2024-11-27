@@ -14,12 +14,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * <p>
- * 脚本执行信息 前端控制器
- * </p>
- *
- * @author Anonymous
- * @since 2024-06-24 15:35:04
+ * @Description: CbbScriptExecInfoController
+ * @author : yangsl25774
+ * @date: 2024/11/27 16:50
  */
 @RestController
 @RequestMapping("/cbbScriptExecInfo")

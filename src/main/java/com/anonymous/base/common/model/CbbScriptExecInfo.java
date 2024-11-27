@@ -9,12 +9,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * <p>
- * 脚本执行信息
- * </p>
- *
- * @author Anonymous
- * @since 2024-06-24 15:35:04
+ * @Description: CbbScriptExecInfo
+ * @author : yangsl25774
+ * @date: 2024/11/27 16:50
  */
 @Getter
 @Setter
