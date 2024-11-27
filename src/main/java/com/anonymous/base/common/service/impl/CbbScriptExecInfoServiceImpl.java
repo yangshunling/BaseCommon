@@ -3,6 +3,7 @@ package com.anonymous.base.common.service.impl;
 import com.anonymous.base.common.model.CbbScriptExecInfo;
 import com.anonymous.base.common.mapper.CbbScriptExecInfoMapper;
 import com.anonymous.base.common.service.ICbbScriptExecInfoService;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -22,6 +23,7 @@ import java.util.List;
  * @since 2024-06-24 15:35:04
  */
 @Service
+@DS("hspbs")
 public class CbbScriptExecInfoServiceImpl extends ServiceImpl<CbbScriptExecInfoMapper, CbbScriptExecInfo> implements ICbbScriptExecInfoService {
 
     @Resource

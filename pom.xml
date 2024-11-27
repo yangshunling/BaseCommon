@@ -19,6 +19,7 @@
         <!-- 开源框架 -->
         <mybatis-plus.version>3.5.7</mybatis-plus.version>
         <velocity.version>2.3</velocity.version>
+        <dynamic-datasource.version>4.3.1</dynamic-datasource.version>
         <sa-token.version>1.38.0</sa-token.version>
         <forest.version>1.5.36</forest.version>
         <!-- 常用工具 -->
@@ -92,6 +93,11 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>${dynamic-datasource.version}</version>
         </dependency>
         <!-- Sa-Token -->
         <dependency>
