@@ -4,8 +4,6 @@ import com.anonymous.base.common.model.CbbScriptExecInfo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
-import java.util.List;
-
 /**
  * <p>
  * 脚本执行信息 服务类
