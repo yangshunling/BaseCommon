@@ -27,13 +27,13 @@ public class SysUserInfoEntity implements Serializable {
      * 用户ID
      */
     @TableId(value = "user_id", type = IdType.INPUT)
-    private Integer userId;
+    private String userId;
 
     /**
      * 用户名
      */
-    @TableField("username")
-    private String username;
+    @TableField("user_name")
+    private String userName;
 
     /**
      * 密码
@@ -56,12 +56,12 @@ public class SysUserInfoEntity implements Serializable {
     /**
      * 账户创建时间
      */
-    @TableField("created_at")
-    private Date createdAt;
+    @TableField("created_time")
+    private Date createdTime;
 
     /**
      * 账户更新时间
      */
-    @TableField("updated_at")
-    private Date updatedAt;
+    @TableField("updated_time")
+    private Date updatedTime;
 }

@@ -34,7 +34,7 @@ public class ResultUtils {
         respond.setErrorNo(SUCCESS);
         respond.setErrorInfo("success");
 
-        Map<String, Object> dataList = new HashMap<>(16);
+        Map<String, Object> dataList = new HashMap<>(2);
         dataList.put("count", count);
         dataList.put("list", list);
         respond.setData(dataList);

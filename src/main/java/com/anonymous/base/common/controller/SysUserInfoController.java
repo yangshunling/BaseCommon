@@ -2,17 +2,12 @@ package com.anonymous.base.common.controller;
 
 import com.anonymous.base.common.model.dto.SysUserInfoDTO;
 import com.anonymous.base.common.model.request.HttpResponse;
+import com.anonymous.base.common.service.ISysUserInfoService;
 import com.anonymous.base.common.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.anonymous.base.common.service.ISysUserInfoService;
+import javax.validation.Valid;
 
 /**
  * <p>
@@ -35,7 +30,7 @@ public class SysUserInfoController {
      * @param sysUserInfoDTO
      */
     @PostMapping("/register")
-    public HttpResponse register(@RequestBody SysUserInfoDTO sysUserInfoDTO) {
+    public HttpResponse register(@RequestBody @Valid SysUserInfoDTO sysUserInfoDTO) {
         sysUserInfoService.userRegister(sysUserInfoDTO);
         return ResultUtils.success();
     }
@@ -46,19 +41,16 @@ public class SysUserInfoController {
      * @param sysUserInfoDTO
      */
     @PostMapping("/login")
-    public HttpResponse login(@RequestBody SysUserInfoDTO sysUserInfoDTO) {
-        sysUserInfoService.userLogin(sysUserInfoDTO);
-        return ResultUtils.success();
+    public HttpResponse login(@RequestBody @Valid SysUserInfoDTO sysUserInfoDTO) {
+        return ResultUtils.object(sysUserInfoService.userLogin(sysUserInfoDTO));
     }
 
     /**
      * 用户退出
-     *
-     * @param userId
      */
-    @PostMapping("/logout")
-    public HttpResponse logout(@RequestParam String userId) {
-        sysUserInfoService.userLogout(userId);
+    @GetMapping("/logout")
+    public HttpResponse logout() {
+        sysUserInfoService.userLogout();
         return ResultUtils.success();
     }
 }

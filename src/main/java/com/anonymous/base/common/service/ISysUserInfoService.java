@@ -1,5 +1,6 @@
 package com.anonymous.base.common.service;
 
+import cn.hutool.core.lang.Dict;
 import com.anonymous.base.common.model.dto.SysUserInfoDTO;
 import org.springframework.stereotype.Service;
 
@@ -29,12 +30,10 @@ public interface ISysUserInfoService extends IService<SysUserInfoEntity> {
      * @param sysUserInfo
      * @return token
      */
-    String userLogin(SysUserInfoDTO sysUserInfo);
+    Dict userLogin(SysUserInfoDTO sysUserInfo);
 
     /**
      * 用户退出
-     *
-     * @param userId
      */
-    void userLogout(String userId);
+    void userLogout();
 }

@@ -1,13 +1,11 @@
 package com.anonymous.base.common.model.dto;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * <p>
@@ -24,15 +22,20 @@ public class SysUserInfoDTO {
     /**
      * 用户名
      */
-    private String username;
+    @NotEmpty(message = "用户名不能为空")
+    @JsonProperty("user_name")
+    private String userName;
 
     /**
      * 密码
      */
+    @NotEmpty(message = "密码不能为空")
+    @JsonProperty("password")
     private String password;
 
     /**
      * 邮箱
      */
+    @JsonProperty("email")
     private String email;
 }
