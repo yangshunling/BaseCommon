@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * @author : Anonymous
  * @Description: ResultUtils 交互接口返回实体
- * @author : yangsl25774
  * @date: 2024/6/21 13:39
  */
 public class ResultUtils {
@@ -18,7 +18,7 @@ public class ResultUtils {
     /**
      * 返回Object对象
      */
-    public static HttpResponse returnObject(Object object) {
+    public static HttpResponse object(Object object) {
         HttpResponse respond = new HttpResponse();
         respond.setErrorNo(SUCCESS);
         respond.setErrorInfo("success");
@@ -29,7 +29,7 @@ public class ResultUtils {
     /**
      * 返回List列表
      */
-    public static <T> HttpResponse returnList(List<T> list, long count) {
+    public static <T> HttpResponse list(List<T> list, long count) {
         HttpResponse respond = new HttpResponse();
         respond.setErrorNo(SUCCESS);
         respond.setErrorInfo("success");
@@ -45,7 +45,7 @@ public class ResultUtils {
     /**
      * 返回成功信息
      */
-    public static HttpResponse returnSuccess() {
+    public static HttpResponse success() {
         HttpResponse respond = new HttpResponse();
         respond.setErrorNo(SUCCESS);
         respond.setErrorInfo("success");
@@ -56,7 +56,7 @@ public class ResultUtils {
     /**
      * 返回错误信息
      */
-    public static HttpResponse returnError(String message) {
+    public static HttpResponse error(String message) {
         HttpResponse respond = new HttpResponse();
         respond.setErrorNo(FAILED);
         respond.setErrorInfo(message);

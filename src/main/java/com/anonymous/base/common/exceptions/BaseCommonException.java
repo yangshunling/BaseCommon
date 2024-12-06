@@ -1,7 +1,7 @@
 package com.anonymous.base.common.exceptions;
 
 /**
- * @author : yangsl25774
+ * @author : Anonymous
  * @Description: BaseCommonException 自定义异常类
  * @date: 2024/6/24 16:52
  */

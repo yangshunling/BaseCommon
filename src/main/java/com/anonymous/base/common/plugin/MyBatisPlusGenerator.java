@@ -9,7 +9,7 @@ import java.sql.Types;
 
 public class MyBatisPlusGenerator {
     public static void main(String[] args) {
-        FastAutoGenerator.create("jdbc:mysql://10.20.26.60:33063/hspbs?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true", "root", "admin@123")
+        FastAutoGenerator.create("jdbc:mysql://10.20.26.60:33063/common-hspbs?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true", "root", "admin@123")
                 .globalConfig(builder -> builder
                         .author("Anonymous") // 设置作者
                         .disableOpenDir() // 禁止打开输出目录
@@ -36,7 +36,7 @@ public class MyBatisPlusGenerator {
                         .serviceImpl("service.impl")
                 )
                 .strategyConfig(builder -> builder
-                        .addInclude("cbb_script_exec_info")
+                        .addInclude("sys_user_info")
                         .entityBuilder()
                         .enableLombok()
                         .enableTableFieldAnnotation()

@@ -1,7 +1,7 @@
 package com.anonymous.base.common.constant;
 
 /**
- * @author : yangsl25774
+ * @author : Anonymous
  * @Description: BaseCommonConstant 常量类
  * @date: 2024/6/24 17:00
  */

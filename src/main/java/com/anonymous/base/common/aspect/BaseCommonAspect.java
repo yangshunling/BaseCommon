@@ -15,7 +15,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author : yangsl25774
+ * @author : Anonymous
  * @Description: BaseCommonAspect
  * @date: 2024/11/26 19:52
  */
@@ -45,7 +45,7 @@ public class BaseCommonAspect {
         }
         HttpServletRequest request = attributes.getRequest();
         // 打印请求相关参数
-        log.info("========================================== Start ==========================================");
+        log.info("=========================== Start ===========================");
         // 打印请求 url
         log.info("URL            : {}", request.getRequestURL().toString());
         // 打印 Http method
@@ -66,7 +66,7 @@ public class BaseCommonAspect {
      */
     @After("log()")
     public void doAfter() {
-        log.info("=========================================== End ===========================================");
+        log.info("============================= End =============================");
         // 每个请求之间空一行
         log.info("");
     }
