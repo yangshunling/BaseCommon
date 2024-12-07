@@ -3,10 +3,8 @@ package com.anonymous.base.common.exceptions;
 import com.anonymous.base.common.model.request.HttpResponse;
 import com.anonymous.base.common.utils.ResultUtils;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.stream.Collectors;
@@ -33,6 +31,14 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.joining(", "));
         // 返回合适的响应
         return ResultUtils.error(errorMessages);
+    }
+
+    /**
+     * BaseCommonException 异常
+     */
+    @ExceptionHandler(BaseCommonException.class)
+    public HttpResponse handleBaseCommonException(BaseCommonException ex) {
+        return ResultUtils.error(ex.getMessage());
     }
 
     /**

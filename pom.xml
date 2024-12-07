@@ -26,6 +26,7 @@
         <hutool.version>5.8.28</hutool.version>
         <lombok.version>1.18.32</lombok.version>
         <fastjson.version>2.0.46</fastjson.version>
+        <org.mapstruct.version>1.6.2</org.mapstruct.version>
 
     </properties>
     <dependencies>
@@ -67,10 +68,10 @@
             <scope>runtime</scope>
         </dependency>
         <!-- Redis -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
+        <!--        </dependency>-->
 
         <!--===========================================================-->
         <!--========================【开源框架】========================-->
@@ -106,12 +107,6 @@
             <artifactId>sa-token-spring-boot-starter</artifactId>
             <version>${sa-token.version}</version>
         </dependency>
-        <!-- Forest -->
-        <dependency>
-            <groupId>com.dtflys.forest</groupId>
-            <artifactId>forest-spring-boot-starter</artifactId>
-            <version>${forest.version}</version>
-        </dependency>
 
         <!--===========================================================-->
         <!--========================【常用工具】========================-->
@@ -136,9 +131,18 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
+        <!-- MapStruct -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+        <!-- MapStruct 编译时注解处理器 -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${org.mapstruct.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

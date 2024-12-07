@@ -45,6 +45,7 @@ public class BaseCommonAspect {
         }
         HttpServletRequest request = attributes.getRequest();
         // 打印请求相关参数
+        log.info("");
         log.info("=========================== Start ===========================");
         // 打印请求 url
         log.info("URL            : {}", request.getRequestURL().toString());
@@ -66,9 +67,7 @@ public class BaseCommonAspect {
      */
     @After("log()")
     public void doAfter() {
-        log.info("============================= End =============================");
-        // 每个请求之间空一行
-        log.info("");
+        log.info("============================ End ===========================");
     }
 
     /**

@@ -4,6 +4,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.lang.Dict;
 import com.anonymous.base.common.exceptions.BaseCommonException;
+import com.anonymous.base.common.helper.BaseConvertHelper;
 import com.anonymous.base.common.model.dto.SysUserInfoDTO;
 import com.anonymous.base.common.model.entity.SysUserInfoEntity;
 import com.anonymous.base.common.mapper.SysUserInfoMapper;
@@ -14,6 +15,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -33,15 +35,23 @@ public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUs
     /**
      * 用户注册
      *
-     * @param sysUserInfo
+     * @param sysUserInfoDTO
      */
     @Override
-    public void userRegister(SysUserInfoDTO sysUserInfo) {
-        SysUserInfoEntity sysUserInfoEntity = new SysUserInfoEntity();
+    public void userRegister(SysUserInfoDTO sysUserInfoDTO) {
+        // 1、查询用户名是否已存在
+        QueryWrapper<SysUserInfoEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_name", sysUserInfoDTO.getUserName());
+        SysUserInfoEntity sysUserInfoEntityResult = sysUserInfoMapper.selectOne(queryWrapper);
+        // 2、如果用户名已存在，则抛出异常
+        if (sysUserInfoEntityResult != null) {
+            throw new BaseCommonException("用户名已存在");
+        }
+        // 3、如果用户名不存在，则转换DTO为Entity
+        SysUserInfoEntity sysUserInfoEntity = BaseConvertHelper.INSTANCE.sysUserDtoToEntity(sysUserInfoDTO);
+        // 4、生成唯一用户ID
         sysUserInfoEntity.setUserId(IdUtils.createSnowflake(1, 1));
-        sysUserInfoEntity.setUserName(sysUserInfo.getUserName());
-        sysUserInfoEntity.setPassword(sysUserInfo.getPassword());
-        sysUserInfoEntity.setEmail(sysUserInfo.getEmail());
+        // 5、插入新的用户记录
         sysUserInfoMapper.insert(sysUserInfoEntity);
     }
 
@@ -52,20 +62,26 @@ public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUs
      * @return
      */
     @Override
-    public Dict userLogin(SysUserInfoDTO sysUserInfo) {
+    public Map<String, Object> userLogin(SysUserInfoDTO sysUserInfo) {
+        // 1、 查询用户
         QueryWrapper<SysUserInfoEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_name", sysUserInfo.getUserName());
         SysUserInfoEntity sysUserInfoEntity = sysUserInfoMapper.selectOne(queryWrapper);
+        // 2、 检查用户是否存在
         if (sysUserInfoEntity == null) {
             throw new BaseCommonException("用户不存在");
         }
+        // 3、 校验密码，密码应加密存储，不直接比对明文密码
         if (!sysUserInfoEntity.getPassword().equals(sysUserInfo.getPassword())) {
             throw new BaseCommonException("密码错误");
         }
-        Dict dict = Dict.create()
-                .set("userId", sysUserInfoEntity.getUserId())
-                .set("token", sysUserInfoEntity.getUserId());
-        return dict;
+        // 4、用户登录
+        StpUtil.login(sysUserInfoEntity.getUserId());
+        // 5、 构建返回结果
+        Map<String, Object> resultMap = new HashMap<>(2);
+        resultMap.put("userId", sysUserInfoEntity.getUserId());
+        resultMap.put("token", StpUtil.getTokenValue());
+        return resultMap;
     }
 
     /**

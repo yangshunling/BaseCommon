@@ -32,7 +32,7 @@ public class SysUserInfoController {
     @PostMapping("/register")
     public HttpResponse register(@RequestBody @Valid SysUserInfoDTO sysUserInfoDTO) {
         sysUserInfoService.userRegister(sysUserInfoDTO);
-        return ResultUtils.success();
+        return ResultUtils.successForMessage("用户注册成功");
     }
 
     /**
@@ -42,7 +42,7 @@ public class SysUserInfoController {
      */
     @PostMapping("/login")
     public HttpResponse login(@RequestBody @Valid SysUserInfoDTO sysUserInfoDTO) {
-        return ResultUtils.object(sysUserInfoService.userLogin(sysUserInfoDTO));
+        return ResultUtils.objectForMessage(sysUserInfoService.userLogin(sysUserInfoDTO), "用户登录成功");
     }
 
     /**
@@ -51,6 +51,6 @@ public class SysUserInfoController {
     @GetMapping("/logout")
     public HttpResponse logout() {
         sysUserInfoService.userLogout();
-        return ResultUtils.success();
+        return ResultUtils.successForMessage("用户退出成功");
     }
 }

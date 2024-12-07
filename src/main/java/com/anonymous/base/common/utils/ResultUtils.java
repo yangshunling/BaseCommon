@@ -19,9 +19,13 @@ public class ResultUtils {
      * 返回Object对象
      */
     public static HttpResponse object(Object object) {
+        return objectForMessage(object, "success");
+    }
+
+    public static HttpResponse objectForMessage(Object object, String message) {
         HttpResponse respond = new HttpResponse();
         respond.setErrorNo(SUCCESS);
-        respond.setErrorInfo("success");
+        respond.setErrorInfo(message);
         respond.setData(object);
         return respond;
     }
@@ -30,9 +34,13 @@ public class ResultUtils {
      * 返回List列表
      */
     public static <T> HttpResponse list(List<T> list, long count) {
+        return listForMessage(list, count, "success");
+    }
+
+    public static <T> HttpResponse listForMessage(List<T> list, long count, String message) {
         HttpResponse respond = new HttpResponse();
         respond.setErrorNo(SUCCESS);
-        respond.setErrorInfo("success");
+        respond.setErrorInfo(message);
 
         Map<String, Object> dataList = new HashMap<>(2);
         dataList.put("count", count);
@@ -46,9 +54,13 @@ public class ResultUtils {
      * 返回成功信息
      */
     public static HttpResponse success() {
+        return successForMessage("success");
+    }
+
+    public static HttpResponse successForMessage(String message) {
         HttpResponse respond = new HttpResponse();
         respond.setErrorNo(SUCCESS);
-        respond.setErrorInfo("success");
+        respond.setErrorInfo(message);
         respond.setData(null);
         return respond;
     }
