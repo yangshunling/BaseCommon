@@ -35,7 +35,7 @@ public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUs
     /**
      * 用户注册
      *
-     * @param sysUserInfoDTO
+     * @param sysUserInfoDTO 用户注册信息
      */
     @Override
     public void userRegister(SysUserInfoDTO sysUserInfoDTO) {
@@ -58,26 +58,26 @@ public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUs
     /**
      * 用户登录
      *
-     * @param sysUserInfo
+     * @param sysUserInfoDTO 用户登录信息
      * @return
      */
     @Override
-    public Map<String, Object> userLogin(SysUserInfoDTO sysUserInfo) {
-        // 1、 查询用户
+    public Map<String, Object> userLogin(SysUserInfoDTO sysUserInfoDTO) {
+        // 1、查询用户
         QueryWrapper<SysUserInfoEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name", sysUserInfo.getUserName());
+        queryWrapper.eq("user_name", sysUserInfoDTO.getUserName());
         SysUserInfoEntity sysUserInfoEntity = sysUserInfoMapper.selectOne(queryWrapper);
-        // 2、 检查用户是否存在
+        // 2、检查用户是否存在
         if (sysUserInfoEntity == null) {
             throw new BaseCommonException("用户不存在");
         }
-        // 3、 校验密码，密码应加密存储，不直接比对明文密码
-        if (!sysUserInfoEntity.getPassword().equals(sysUserInfo.getPassword())) {
+        // 3、校验密码，密码应加密存储，不直接比对明文密码
+        if (!sysUserInfoEntity.getPassword().equals(sysUserInfoDTO.getPassword())) {
             throw new BaseCommonException("密码错误");
         }
         // 4、用户登录
         StpUtil.login(sysUserInfoEntity.getUserId());
-        // 5、 构建返回结果
+        // 5、构建返回结果
         Map<String, Object> resultMap = new HashMap<>(2);
         resultMap.put("userId", sysUserInfoEntity.getUserId());
         resultMap.put("token", StpUtil.getTokenValue());
