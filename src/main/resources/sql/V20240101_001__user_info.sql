@@ -1,4 +1,4 @@
-DROP table sys_user_info;
+DROP TABLE IF EXISTS sys_user_info;
 CREATE TABLE `sys_user_info` (
     `user_id` VARCHAR(64) PRIMARY KEY COMMENT '用户ID',
     `user_name` VARCHAR(50) NOT NULL COMMENT '用户名',

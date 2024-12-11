@@ -19,7 +19,6 @@
         <!-- 开源框架 -->
         <mybatis-plus.version>3.5.7</mybatis-plus.version>
         <velocity.version>2.3</velocity.version>
-        <dynamic-datasource.version>4.3.1</dynamic-datasource.version>
         <sa-token.version>1.38.0</sa-token.version>
         <forest.version>1.5.36</forest.version>
         <!-- 常用工具 -->
@@ -27,7 +26,7 @@
         <lombok.version>1.18.32</lombok.version>
         <fastjson.version>2.0.46</fastjson.version>
         <mapstruct.version>1.6.2</mapstruct.version>
-        <flyway.version>11.0.1</flyway.version>
+        <flyway.version>8.2.0</flyway.version>
     </properties>
     <dependencies>
 
@@ -68,10 +67,10 @@
             <scope>runtime</scope>
         </dependency>
         <!-- Redis -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
         <!--===========================================================-->
         <!--========================【开源框架】========================-->
@@ -94,12 +93,6 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity.version}</version>
-        </dependency>
-        <!-- Dynamic-Datasource -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-            <version>${dynamic-datasource.version}</version>
         </dependency>
         <!-- Sa-Token -->
         <dependency>
@@ -144,7 +137,7 @@
             <version>${mapstruct.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Flyway 数据库管理工具 -->
+        <!-- Flyway 数据库管理工具，注意：Flyway 版本高于 8.2.0 时，需要额外添加 mysql 依赖.建议使用8.2.0版本 -->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
