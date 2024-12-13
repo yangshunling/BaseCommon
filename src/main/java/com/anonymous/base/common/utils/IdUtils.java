@@ -4,9 +4,12 @@ import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;
 
 /**
- * @author : Anonymous
- * @Description: IdUtils 序列号工具类
- * @date: 2024/12/6 15:42
+ * <p>
+ * IdUtils 序列号工具类
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:36
  */
 public class IdUtils {
 

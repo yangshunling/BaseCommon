@@ -49,9 +49,7 @@ public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUs
         }
         // 3、如果用户名不存在，则转换DTO为Entity
         SysUserInfoEntity sysUserInfoEntity = BaseConvertHelper.INSTANCE.sysUserDtoToEntity(sysUserInfoDTO);
-        // 4、生成唯一用户ID
-        sysUserInfoEntity.setUserId(IdUtils.createSnowflake(1, 1));
-        // 5、插入新的用户记录
+        // 4、插入新的用户记录
         sysUserInfoMapper.insert(sysUserInfoEntity);
     }
 

@@ -12,9 +12,12 @@ import java.io.File;
 import java.util.List;
 
 /**
- * @author : yangsl25774
- * @Description: MailHelper 邮件发送工具类
- * @date: 2024/12/11 16:29
+ * <p>
+ * BaseMailHelper 邮件发送工具类
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:34
  */
 @Component
 public class BaseMailHelper {

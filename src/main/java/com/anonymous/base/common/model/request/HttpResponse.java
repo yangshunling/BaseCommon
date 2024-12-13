@@ -4,9 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
- * @author : Anonymous
- * @Description: HttpResponse
- * @date: 2024/6/21 13:09
+ * <p>
+ * HttpResponse 统一返回数据模型
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:34
  */
 @Data
 public class HttpResponse {

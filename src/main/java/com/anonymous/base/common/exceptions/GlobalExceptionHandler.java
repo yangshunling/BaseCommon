@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.stream.Collectors;
 
 /**
- * @author : Anonymous
- * @Description: GlobalExceptionHandler 全局异常
- * @date: 2024/12/6 14:56
+ * <p>
+ * GlobalExceptionHandler 全局异常
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:35
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {

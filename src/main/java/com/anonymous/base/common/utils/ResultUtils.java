@@ -7,9 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author : Anonymous
- * @Description: ResultUtils 交互接口返回实体
- * @date: 2024/6/21 13:39
+ * <p>
+ * ResultUtils 统一返回结果工具类
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:36
  */
 public class ResultUtils {
     public static final int SUCCESS = 200;

@@ -6,9 +6,12 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 /**
- * @author : Anonymous
- * @Description: CommonMapper 对象映射通用转换类
- * @date: 2024/12/7 15:12
+ * <p>
+ * BaseConvertHelper 对象映射通用转换类
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:33
  */
 @Mapper
 public interface BaseConvertHelper {

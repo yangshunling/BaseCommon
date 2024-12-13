@@ -1,9 +1,12 @@
 package com.anonymous.base.common.constant;
 
 /**
- * @author : Anonymous
- * @Description: BaseCommonConstant 常量类
- * @date: 2024/6/24 17:00
+ * <p>
+ * BaseCommonConstant 常量类
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:32
  */
 public class BaseCommonConstant {
 

@@ -8,9 +8,12 @@ import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * @author : yangsl25774
- * @Description: RedisConfig Redis配置类
- * @date: 2024/12/11 15:42
+ * <p>
+ * RedisConfig Redis配置类
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:34
  */
 @Configuration
 public class RedisConfig {

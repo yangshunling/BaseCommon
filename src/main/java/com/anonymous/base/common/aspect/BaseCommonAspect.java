@@ -15,9 +15,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author : Anonymous
- * @Description: BaseCommonAspect
- * @date: 2024/11/26 19:52
+ * <p>
+ * BaseCommonAspect
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:33
  */
 @Aspect
 @Slf4j

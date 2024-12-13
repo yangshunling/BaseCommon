@@ -7,9 +7,12 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Description: RedisOperateHelper Redis操作工具类
- * @author : yangsl25774
- * @date: 2024/12/11 14:50
+ * <p>
+ * BaseRedisHelper Redis操作工具类
+ * </p>
+ *
+ * @author Anonymous
+ * @since 2024/12/13 19:34
  */
 @Service
 public class BaseRedisHelper {

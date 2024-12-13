@@ -26,7 +26,7 @@ public class SysUserInfoEntity implements Serializable {
     /**
      * 用户ID
      */
-    @TableId(value = "user_id", type = IdType.INPUT)
+    @TableId(value = "user_id", type = IdType.AUTO)
     private String userId;
 
     /**

@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS sys_user_info;
 CREATE TABLE `sys_user_info` (
-    `user_id` VARCHAR(64) PRIMARY KEY COMMENT '用户ID',
+    `user_id` INT AUTO_INCREMENT PRIMARY KEY COMMENT '用户ID',
     `user_name` VARCHAR(50) NOT NULL COMMENT '用户名',
     `password` VARCHAR(255) NOT NULL COMMENT '密码',
     `email` VARCHAR(100) COMMENT '邮箱',
