@@ -27,6 +27,7 @@
         <fastjson.version>2.0.46</fastjson.version>
         <mapstruct.version>1.6.2</mapstruct.version>
         <flyway.version>8.2.0</flyway.version>
+        <easyexcel.version>4.0.3</easyexcel.version>
     </properties>
     <dependencies>
 
@@ -148,6 +149,14 @@
             <artifactId>flyway-core</artifactId>
             <version>${flyway.version}</version>
         </dependency>
+
+        <!-- EasyExcel -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>${easyexcel.version}</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>

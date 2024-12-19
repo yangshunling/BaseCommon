@@ -59,7 +59,7 @@ public class BaseCommonAspect {
         // 打印请求的 IP
         log.info("IP             : {}", request.getRemoteAddr());
         // 打印请求入参
-        log.info("Request Args   : {}", JSON.toJSONString(joinPoint.getArgs()));
+//        log.info("Request Args   : {}", JSON.toJSONString(joinPoint.getArgs()));
         //请求头
         String token = request.getHeader("Authorization");
         log.info("token          : {}", token);
