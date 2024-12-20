@@ -44,7 +44,7 @@ public class MyBatisPlusGenerator {
                         .serviceImpl("service.impl")
                 )
                 .strategyConfig(builder -> builder
-                        .addInclude("sys_log_operate")
+                        .addInclude("")
                         .entityBuilder()
                         .enableLombok()
                         .enableTableFieldAnnotation()

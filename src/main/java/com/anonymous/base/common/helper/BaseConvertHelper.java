@@ -1,6 +1,8 @@
 package com.anonymous.base.common.helper;
 
+import com.anonymous.base.common.model.dto.SysMenuDTO;
 import com.anonymous.base.common.model.dto.SysUserInfoDTO;
+import com.anonymous.base.common.model.entity.SysMenuEntity;
 import com.anonymous.base.common.model.entity.SysUserInfoEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -28,4 +30,14 @@ public interface BaseConvertHelper {
      * @return SysUserInfoEntity 对象
      */
     SysUserInfoEntity sysUserDtoToEntity(SysUserInfoDTO sysUserInfoDTO);
+
+    /**
+     * SysMenuDTO 对象转换为 SysMenuEntity 对象
+     *
+     * @param sysMenuDTO SysMenuDTO 对象
+     * @return SysMenuEntity 对象
+     */
+    SysMenuEntity sysMenuDtoToEntity(SysMenuDTO sysMenuDTO);
+
+
 }
