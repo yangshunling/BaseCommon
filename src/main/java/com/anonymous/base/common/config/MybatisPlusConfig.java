@@ -1,5 +1,6 @@
 package com.anonymous.base.common.config;
 
+import com.anonymous.base.common.cache.FIFOCacheStrategy;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;

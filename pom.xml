@@ -15,7 +15,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- Springboot 生态体系 -->
         <spring-boot.version>2.7.4</spring-boot.version>
-        <!-- Java 中间件 -->
+        <!-- 数据库 -->
+        <mysql.version>8.0.28</mysql.version>
+        <!-- 中间件 -->
         <!-- 开源框架 -->
         <mybatis-plus.version>3.5.7</mybatis-plus.version>
         <velocity.version>2.3</velocity.version>
@@ -35,47 +37,53 @@
         <!--========================【Springboot 生态体系】========================-->
         <!--======================================================================-->
 
-        <!-- Starter启动 -->
+        <!-- Starter 启动 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- AOP切面 -->
+        <!-- AOP 切面 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <!-- Validation校验 -->
+        <!-- Validation 校验 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-        <!-- Redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <!-- Mail 邮件发送工具 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-        <!-- Test单元测试 -->
+        <!-- Test 单元测试 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!--==============================================================-->
-        <!--========================【Java 中间件】========================-->
-        <!--==============================================================-->
+        <!--===========================================================-->
+        <!--========================【数据库】==========================-->
+        <!--===========================================================-->
 
-        <!-- MySql -->
+        <!-- MySql 驱动 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!--===========================================================-->
+        <!--========================【中间件】==========================-->
+        <!--===========================================================-->
+
+        <!-- Redis 数据缓存 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <!--===========================================================-->
@@ -100,7 +108,7 @@
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity.version}</version>
         </dependency>
-        <!-- Sa-Token -->
+        <!-- Sa-Token 权限认证 -->
         <dependency>
             <groupId>cn.dev33</groupId>
             <artifactId>sa-token-spring-boot-starter</artifactId>
@@ -149,8 +157,7 @@
             <artifactId>flyway-core</artifactId>
             <version>${flyway.version}</version>
         </dependency>
-
-        <!-- EasyExcel -->
+        <!-- EasyExcel 表格处理 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
