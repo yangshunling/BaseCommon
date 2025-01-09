@@ -2,52 +2,53 @@ package com.anonymous.base.common.cache;
 
 import cn.hutool.cache.Cache;
 import cn.hutool.cache.CacheUtil;
+import com.anonymous.base.common.cache.base.BaseCacheContainer;
 
 /**
  * <p>
- * FIFOCacheStrategy 【先入先出】缓存策略
+ * LFUCacheStrategy 【定时清理、惰性缓存】缓存策略
  * </p>
  *
  * @author Anonymous
  * @since 2024/12/27 13:55
  */
-public class FIFOCacheStrategy implements BaseCacheStrategy<String, Object> {
+public class TimedCacheContainer<K, V> implements BaseCacheContainer<K, V> {
 
     /**
      * FIFO 缓存实例
      */
-    private final Cache<String, Object> fifoCache;
+    private final Cache<K, V> timedCache;
 
     /**
      * 构造函数，初始化 FIFO 缓存。
      *
      * @param maxSize 缓存的最大容量
      */
-    public FIFOCacheStrategy(int maxSize) {
-        fifoCache = CacheUtil.newFIFOCache(maxSize);
+    public TimedCacheContainer(int maxSize) {
+        timedCache = CacheUtil.newTimedCache(maxSize);
     }
 
     /**
      * 向缓存中添加一个键值对。
      * 如果缓存已满，将会移除最早添加的元素。
      *
-     * @param K 缓存的键
-     * @param V 缓存的值
+     * @param key   缓存的键
+     * @param value 缓存的值
      */
     @Override
-    public void put(String K, Object V) {
-        fifoCache.put(K, V);
+    public void put(K key, V value) {
+        timedCache.put(key, value);
     }
 
     /**
      * 从缓存中获取指定键的值。
      *
-     * @param K 缓存的键
+     * @param key 缓存的键
      * @return 如果缓存中存在该键，则返回对应的值；否则返回 null
      */
     @Override
-    public Object get(String K) {
-        return fifoCache.get(K);
+    public V get(K key) {
+        return timedCache.get(key);
     }
 
     /**
@@ -57,8 +58,8 @@ public class FIFOCacheStrategy implements BaseCacheStrategy<String, Object> {
      * @return 如果缓存中包含该键，返回 true；否则返回 false
      */
     @Override
-    public boolean containsKey(String key) {
-        return fifoCache.containsKey(key);
+    public boolean containsKey(K key) {
+        return timedCache.containsKey(key);
     }
 
     /**
@@ -68,7 +69,7 @@ public class FIFOCacheStrategy implements BaseCacheStrategy<String, Object> {
      */
     @Override
     public long size() {
-        return fifoCache.size();
+        return timedCache.size();
     }
 
     /**
@@ -77,8 +78,8 @@ public class FIFOCacheStrategy implements BaseCacheStrategy<String, Object> {
      * @param key 缓存的键
      */
     @Override
-    public void remove(String key) {
-        fifoCache.remove(key);
+    public void remove(K key) {
+        timedCache.remove(key);
     }
 
     /**
@@ -86,6 +87,6 @@ public class FIFOCacheStrategy implements BaseCacheStrategy<String, Object> {
      */
     @Override
     public void clear() {
-        fifoCache.clear();
+        timedCache.clear();
     }
 }

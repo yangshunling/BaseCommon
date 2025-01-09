@@ -1,4 +1,4 @@
-package com.anonymous.base.common.cache;
+package com.anonymous.base.common.cache.base;
 
 /**
  * <p>
@@ -8,23 +8,23 @@ package com.anonymous.base.common.cache;
  * @author Anonymous
  * @since 2024/12/27 13:46
  */
-public interface BaseCacheStrategy<K, V> {
+public interface BaseCacheContainer<K, V> {
 
     /**
      * 向缓存中添加数据
      *
-     * @param K 缓存的键
-     * @param V 缓存的值
+     * @param key   缓存的键
+     * @param value 缓存的值
      */
-    void put(String K, Object V);
+    void put(K key, V value);
 
     /**
      * 从缓存中获取数据
      *
-     * @param K 缓存的键
+     * @param key 缓存的键
      * @return 缓存中的值
      */
-    V get(String K);
+    V get(K key);
 
     /**
      * 检查缓存中是否包含某个键
@@ -32,7 +32,7 @@ public interface BaseCacheStrategy<K, V> {
      * @param key 缓存的键
      * @return 是否包含该键
      */
-    boolean containsKey(String key);
+    boolean containsKey(K key);
 
     /**
      * 获取缓存的大小
