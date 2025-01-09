@@ -1,4 +1,4 @@
-package com.anonymous.base.common.cache.base;
+package com.anonymous.base.common.base;
 
 /**
  * <p>

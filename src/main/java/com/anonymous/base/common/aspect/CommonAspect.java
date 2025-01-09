@@ -2,9 +2,8 @@ package com.anonymous.base.common.aspect;
 
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.JSON;
-import com.anonymous.base.common.constant.BaseCommonConstant;
-import com.anonymous.base.common.exceptions.BaseCommonException;
+import com.anonymous.base.common.constant.CommonConstant;
+import com.anonymous.base.common.exceptions.CommonException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -25,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 @Aspect
 @Slf4j
 @Component
-public class BaseCommonAspect {
+public class CommonAspect {
 
     /**
      * 定义切入点
@@ -44,7 +43,7 @@ public class BaseCommonAspect {
         // 开始打印请求日志
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (attributes == null) {
-            throw new BaseCommonException(StrUtil.format("【{}】Attributes cannot be null", BaseCommonConstant.BASE_COMMON_ASPECT));
+            throw new CommonException(StrUtil.format("【{}】Attributes cannot be null", CommonConstant.BASE_COMMON_ASPECT));
         }
         HttpServletRequest request = attributes.getRequest();
         // 打印请求相关参数

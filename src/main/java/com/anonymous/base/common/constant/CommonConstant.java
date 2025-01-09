@@ -8,7 +8,7 @@ package com.anonymous.base.common.constant;
  * @author Anonymous
  * @since 2024/12/13 19:32
  */
-public class BaseCommonConstant {
+public class CommonConstant {
 
     // 日志前缀常量
     public static final String BASE_COMMON_ASPECT = "BaseCommonAspect";

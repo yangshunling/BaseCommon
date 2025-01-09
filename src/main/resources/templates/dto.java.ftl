@@ -3,7 +3,7 @@ package ${package.Entity};
 <#list table.importPackages as pkg>
 import ${pkg};
 </#list>
-import com.anonymous.base.common.base.BasePage;
+import com.anonymous.base.common.base.BasePageParam;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 

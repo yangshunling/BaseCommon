@@ -1,76 +1,65 @@
-package com.anonymous.base.common.plugin.generator;
+package com.anonymous.base.common.model.dto;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import java.util.Date;
+
+import com.anonymous.base.common.base.BasePageParam;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
  * <p>
- * 用户表
+ * DTO
  * </p>
  *
  * @author Anonymous
- * @since 2025-01-09 19:30:42
+ * @since 2025-01-09 19:53:47
  */
 @Data
-@TableName("sys_user")
-public class SysUserEntity {
+public class SysUserDTO extends BasePageParam {
 
     /**
      * 用户ID
      */
-    @TableId(value = "user_id", type = IdType.AUTO)
+    @JsonProperty("user_id")
     private Integer userId;
-
     /**
      * 用户名
      */
-    @TableField("user_name")
+    @JsonProperty("user_name")
     private String userName;
-
     /**
      * 用户密码
      */
-    @TableField("password")
+    @JsonProperty("password")
     private String password;
-
     /**
      * 手机号码
      */
-    @TableField("mobile")
+    @JsonProperty("mobile")
     private String mobile;
-
     /**
      * 邮箱
      */
-    @TableField("email")
+    @JsonProperty("email")
     private String email;
-
     /**
      * 部门ID
      */
-    @TableField("department_id")
+    @JsonProperty("department_id")
     private Integer departmentId;
-
     /**
      * 账户状态
      */
-    @TableField("user_status")
+    @JsonProperty("user_status")
     private Integer userStatus;
-
     /**
      * 账户创建时间
      */
-    @TableField("created_time")
+    @JsonProperty("created_time")
     private Date createdTime;
-
     /**
      * 账户更新时间
      */
-    @TableField("updated_time")
+    @JsonProperty("updated_time")
     private Date updatedTime;
 }

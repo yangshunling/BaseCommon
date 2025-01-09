@@ -1,10 +1,5 @@
-package com.anonymous.base.common.plugin.generator;
+package com.anonymous.base.common.model.vo;
 
-    import com.baomidou.mybatisplus.annotation.IdType;
-    import com.baomidou.mybatisplus.annotation.TableField;
-    import com.baomidou.mybatisplus.annotation.TableId;
-    import com.baomidou.mybatisplus.annotation.TableName;
-    import java.io.Serializable;
     import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,7 +11,7 @@ import lombok.Data;
     * </p>
 *
 * @author Anonymous
-* @since 2025-01-09 19:30:42
+* @since 2025-01-09 19:53:47
 */
 @Data
 public class SysUserVO {

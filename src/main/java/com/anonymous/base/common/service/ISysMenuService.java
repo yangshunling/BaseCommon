@@ -4,6 +4,7 @@ import com.anonymous.base.common.model.dto.SysMenuDTO;
 import com.anonymous.base.common.model.entity.SysMenuEntity;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

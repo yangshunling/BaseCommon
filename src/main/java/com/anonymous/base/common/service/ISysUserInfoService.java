@@ -1,7 +1,7 @@
 package com.anonymous.base.common.service;
 
-import com.anonymous.base.common.model.dto.SysUserInfoDTO;
 import com.anonymous.base.common.model.entity.SysUserEntity;
+import com.anonymous.base.common.model.dto.SysUserDTO;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.Map;
@@ -19,17 +19,17 @@ public interface ISysUserInfoService extends IService<SysUserEntity> {
     /**
      * 用户注册
      *
-     * @param sysUserInfo 用户信息
+     * @param sysUserDTO 用户信息
      */
-    void userRegister(SysUserInfoDTO sysUserInfo);
+    void userRegister(SysUserDTO sysUserDTO);
 
     /**
      * 用户登录
      *
-     * @param sysUserInfo 用户信息
+     * @param sysUser 用户信息
      * @return token
      */
-    Map<String, Object> userLogin(SysUserInfoDTO sysUserInfo);
+    Map<String, Object> userLogin(SysUserDTO sysUser);
 
     /**
      * 用户退出

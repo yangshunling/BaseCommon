@@ -39,8 +39,8 @@ public class GlobalExceptionHandler {
     /**
      * BaseCommonException 异常
      */
-    @ExceptionHandler(BaseCommonException.class)
-    public HttpResponse handleBaseCommonException(BaseCommonException ex) {
+    @ExceptionHandler(CommonException.class)
+    public HttpResponse handleBaseCommonException(CommonException ex) {
         return ResultUtils.error(ex.getMessage());
     }
 

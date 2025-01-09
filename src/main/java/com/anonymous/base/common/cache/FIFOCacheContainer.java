@@ -2,7 +2,7 @@ package com.anonymous.base.common.cache;
 
 import cn.hutool.cache.Cache;
 import cn.hutool.cache.CacheUtil;
-import com.anonymous.base.common.cache.base.BaseCacheContainer;
+import com.anonymous.base.common.base.BaseCacheContainer;
 
 /**
  * <p>

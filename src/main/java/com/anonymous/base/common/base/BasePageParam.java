@@ -12,7 +12,7 @@ import lombok.Data;
  * @since 2025/1/9 17:15
  */
 @Data
-public class BasePage {
+public class BasePageParam {
     /**
      * 页码
      */

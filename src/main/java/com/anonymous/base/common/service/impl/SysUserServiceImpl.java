@@ -1,11 +1,11 @@
 package com.anonymous.base.common.service.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
-import com.anonymous.base.common.exceptions.BaseCommonException;
-import com.anonymous.base.common.helper.BaseConvertHelper;
-import com.anonymous.base.common.model.dto.SysUserInfoDTO;
-import com.anonymous.base.common.model.entity.SysUserEntity;
+import com.anonymous.base.common.exceptions.CommonException;
 import com.anonymous.base.common.mapper.SysUserInfoMapper;
+import com.anonymous.base.common.model.convertor.SysUserConvertor;
+import com.anonymous.base.common.model.entity.SysUserEntity;
+import com.anonymous.base.common.model.dto.SysUserDTO;
 import com.anonymous.base.common.service.ISysUserInfoService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -24,7 +24,7 @@ import java.util.Map;
  * @since 2024-12-06 13:41:30
  */
 @Service
-public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUserEntity> implements ISysUserInfoService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUserEntity> implements ISysUserInfoService {
 
     @Autowired
     private SysUserInfoMapper sysUserInfoMapper;
@@ -32,43 +32,43 @@ public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUs
     /**
      * 用户注册
      *
-     * @param sysUserInfoDTO 用户注册信息
+     * @param sysUserDTO 用户注册信息
      */
     @Override
-    public void userRegister(SysUserInfoDTO sysUserInfoDTO) {
+    public void userRegister(SysUserDTO sysUserDTO) {
         // 1、查询用户名是否已存在
         QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name", sysUserInfoDTO.getUserName());
+        queryWrapper.eq("user_name", sysUserDTO.getUserName());
         SysUserEntity sysUserInfoEntityResult = sysUserInfoMapper.selectOne(queryWrapper);
         // 2、如果用户名已存在，则抛出异常
         if (sysUserInfoEntityResult != null) {
-            throw new BaseCommonException("用户名已存在");
+            throw new CommonException("用户名已存在");
         }
         // 3、如果用户名不存在，则转换DTO为Entity
-        SysUserEntity sysUserInfoEntity = BaseConvertHelper.INSTANCE.sysUserDtoToEntity(sysUserInfoDTO);
+        SysUserEntity sysUserEntity = SysUserConvertor.INSTANCE.toEntity(sysUserDTO);
         // 4、插入新的用户记录
-        sysUserInfoMapper.insert(sysUserInfoEntity);
+        sysUserInfoMapper.insert(sysUserEntity);
     }
 
     /**
      * 用户登录
      *
-     * @param sysUserInfoDTO 用户登录信息
+     * @param sysUserDTO 用户登录信息
      * @return
      */
     @Override
-    public Map<String, Object> userLogin(SysUserInfoDTO sysUserInfoDTO) {
+    public Map<String, Object> userLogin(SysUserDTO sysUserDTO) {
         // 1、查询用户
         QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name", sysUserInfoDTO.getUserName());
+        queryWrapper.eq("user_name", sysUserDTO.getUserName());
         SysUserEntity sysUserInfoEntity = sysUserInfoMapper.selectOne(queryWrapper);
         // 2、检查用户是否存在
         if (sysUserInfoEntity == null) {
-            throw new BaseCommonException("用户不存在");
+            throw new CommonException("用户不存在");
         }
         // 3、校验密码，密码应加密存储，不直接比对明文密码
-        if (!sysUserInfoEntity.getPassword().equals(sysUserInfoDTO.getPassword())) {
-            throw new BaseCommonException("密码错误");
+        if (!sysUserInfoEntity.getPassword().equals(sysUserDTO.getPassword())) {
+            throw new CommonException("密码错误");
         }
         // 4、用户登录
         StpUtil.login(sysUserInfoEntity.getUserId());

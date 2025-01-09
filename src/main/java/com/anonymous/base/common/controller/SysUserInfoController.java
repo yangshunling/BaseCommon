@@ -1,6 +1,6 @@
 package com.anonymous.base.common.controller;
 
-import com.anonymous.base.common.model.dto.SysUserInfoDTO;
+import com.anonymous.base.common.model.dto.SysUserDTO;
 import com.anonymous.base.common.model.request.HttpResponse;
 import com.anonymous.base.common.service.ISysUserInfoService;
 import com.anonymous.base.common.utils.ResultUtils;
@@ -27,22 +27,22 @@ public class SysUserInfoController {
     /**
      * 用户注册
      *
-     * @param sysUserInfoDTO
+     * @param sysUserDTO
      */
     @PostMapping("/register")
-    public HttpResponse register(@RequestBody @Valid SysUserInfoDTO sysUserInfoDTO) {
-        sysUserInfoService.userRegister(sysUserInfoDTO);
+    public HttpResponse register(@RequestBody @Valid SysUserDTO sysUserDTO) {
+        sysUserInfoService.userRegister(sysUserDTO);
         return ResultUtils.successForMessage("用户注册成功");
     }
 
     /**
      * 用户登录
      *
-     * @param sysUserInfoDTO
+     * @param sysUserDTO
      */
     @PostMapping("/login")
-    public HttpResponse login(@RequestBody @Valid SysUserInfoDTO sysUserInfoDTO) {
-        return ResultUtils.objectForMessage(sysUserInfoService.userLogin(sysUserInfoDTO), "用户登录成功");
+    public HttpResponse login(@RequestBody @Valid SysUserDTO sysUserDTO) {
+        return ResultUtils.objectForMessage(sysUserInfoService.userLogin(sysUserDTO), "用户登录成功");
     }
 
     /**
