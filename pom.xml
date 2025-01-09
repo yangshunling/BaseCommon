@@ -21,6 +21,7 @@
         <!-- 开源框架 -->
         <mybatis-plus.version>3.5.7</mybatis-plus.version>
         <velocity.version>2.3</velocity.version>
+        <freemarker.version>2.3.34</freemarker.version>
         <sa-token.version>1.38.0</sa-token.version>
         <forest.version>1.5.36</forest.version>
         <!-- 常用工具 -->
@@ -107,6 +108,12 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity.version}</version>
+        </dependency>
+        <!--freemarker模板引擎-->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
         </dependency>
         <!-- Sa-Token 权限认证 -->
         <dependency>

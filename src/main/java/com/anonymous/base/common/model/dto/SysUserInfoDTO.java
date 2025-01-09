@@ -1,6 +1,5 @@
 package com.anonymous.base.common.model.dto;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -15,7 +14,6 @@ import javax.validation.constraints.NotEmpty;
  * @since 2024-12-06 13:41:30
  */
 @Data
-@TableName("sys_user_info")
 public class SysUserInfoDTO {
 
     /**
@@ -26,15 +24,33 @@ public class SysUserInfoDTO {
     private String userName;
 
     /**
-     * 密码
+     * 用户密码
      */
     @NotEmpty(message = "密码不能为空")
     @JsonProperty("password")
     private String password;
 
     /**
+     * 手机号码
+     */
+    @JsonProperty("mobile")
+    private String mobile;
+
+    /**
      * 邮箱
      */
     @JsonProperty("email")
     private String email;
+
+    /**
+     * 部门ID
+     */
+    @JsonProperty("department_id")
+    private Integer departmentId;
+
+    /**
+     * 账户状态
+     */
+    @JsonProperty("user_status")
+    private Integer userStatus;
 }

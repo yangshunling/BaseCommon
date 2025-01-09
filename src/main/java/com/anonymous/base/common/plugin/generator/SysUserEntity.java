@@ -1,4 +1,4 @@
-package com.anonymous.base.common.model.entity;
+package com.anonymous.base.common.plugin.generator;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -6,28 +6,25 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
-
 import lombok.Data;
 
 /**
  * <p>
- * 用户信息表
+ * 用户表
  * </p>
  *
  * @author Anonymous
- * @since 2024-12-06 13:41:30
+ * @since 2025-01-09 19:30:42
  */
 @Data
-@TableName("sys_user_info")
-public class SysUserInfoEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@TableName("sys_user")
+public class SysUserEntity {
 
     /**
      * 用户ID
      */
     @TableId(value = "user_id", type = IdType.AUTO)
-    private String userId;
+    private Integer userId;
 
     /**
      * 用户名
@@ -36,10 +33,16 @@ public class SysUserInfoEntity implements Serializable {
     private String userName;
 
     /**
-     * 密码
+     * 用户密码
      */
     @TableField("password")
     private String password;
+
+    /**
+     * 手机号码
+     */
+    @TableField("mobile")
+    private String mobile;
 
     /**
      * 邮箱
@@ -48,10 +51,16 @@ public class SysUserInfoEntity implements Serializable {
     private String email;
 
     /**
+     * 部门ID
+     */
+    @TableField("department_id")
+    private Integer departmentId;
+
+    /**
      * 账户状态
      */
-    @TableField("status")
-    private String status;
+    @TableField("user_status")
+    private Integer userStatus;
 
     /**
      * 账户创建时间

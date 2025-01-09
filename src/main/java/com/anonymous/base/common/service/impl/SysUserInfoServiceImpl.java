@@ -1,15 +1,12 @@
 package com.anonymous.base.common.service.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
-import cn.hutool.core.date.DateTime;
-import cn.hutool.core.lang.Dict;
 import com.anonymous.base.common.exceptions.BaseCommonException;
 import com.anonymous.base.common.helper.BaseConvertHelper;
 import com.anonymous.base.common.model.dto.SysUserInfoDTO;
-import com.anonymous.base.common.model.entity.SysUserInfoEntity;
+import com.anonymous.base.common.model.entity.SysUserEntity;
 import com.anonymous.base.common.mapper.SysUserInfoMapper;
 import com.anonymous.base.common.service.ISysUserInfoService;
-import com.anonymous.base.common.utils.IdUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +24,7 @@ import java.util.Map;
  * @since 2024-12-06 13:41:30
  */
 @Service
-public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUserInfoEntity> implements ISysUserInfoService {
+public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUserEntity> implements ISysUserInfoService {
 
     @Autowired
     private SysUserInfoMapper sysUserInfoMapper;
@@ -40,15 +37,15 @@ public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUs
     @Override
     public void userRegister(SysUserInfoDTO sysUserInfoDTO) {
         // 1、查询用户名是否已存在
-        QueryWrapper<SysUserInfoEntity> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_name", sysUserInfoDTO.getUserName());
-        SysUserInfoEntity sysUserInfoEntityResult = sysUserInfoMapper.selectOne(queryWrapper);
+        SysUserEntity sysUserInfoEntityResult = sysUserInfoMapper.selectOne(queryWrapper);
         // 2、如果用户名已存在，则抛出异常
         if (sysUserInfoEntityResult != null) {
             throw new BaseCommonException("用户名已存在");
         }
         // 3、如果用户名不存在，则转换DTO为Entity
-        SysUserInfoEntity sysUserInfoEntity = BaseConvertHelper.INSTANCE.sysUserDtoToEntity(sysUserInfoDTO);
+        SysUserEntity sysUserInfoEntity = BaseConvertHelper.INSTANCE.sysUserDtoToEntity(sysUserInfoDTO);
         // 4、插入新的用户记录
         sysUserInfoMapper.insert(sysUserInfoEntity);
     }
@@ -62,9 +59,9 @@ public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoMapper, SysUs
     @Override
     public Map<String, Object> userLogin(SysUserInfoDTO sysUserInfoDTO) {
         // 1、查询用户
-        QueryWrapper<SysUserInfoEntity> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_name", sysUserInfoDTO.getUserName());
-        SysUserInfoEntity sysUserInfoEntity = sysUserInfoMapper.selectOne(queryWrapper);
+        SysUserEntity sysUserInfoEntity = sysUserInfoMapper.selectOne(queryWrapper);
         // 2、检查用户是否存在
         if (sysUserInfoEntity == null) {
             throw new BaseCommonException("用户不存在");

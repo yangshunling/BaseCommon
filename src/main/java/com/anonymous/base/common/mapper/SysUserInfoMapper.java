@@ -1,8 +1,8 @@
 package com.anonymous.base.common.mapper;
 
+import com.anonymous.base.common.model.entity.SysUserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
-import com.anonymous.base.common.model.entity.SysUserInfoEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -14,6 +14,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2024-12-06 13:41:30
  */
 @Mapper
-public interface SysUserInfoMapper extends BaseMapper<SysUserInfoEntity> {
+public interface SysUserInfoMapper extends BaseMapper<SysUserEntity> {
 
 }
