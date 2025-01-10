@@ -1,6 +1,6 @@
 package com.anonymous.base.common.utils;
 
-import com.anonymous.base.common.model.request.HttpResponse;
+import com.anonymous.base.common.web.model.request.HttpResponse;
 
 import java.util.HashMap;
 import java.util.List;

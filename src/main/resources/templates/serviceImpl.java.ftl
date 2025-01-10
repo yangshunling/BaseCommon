@@ -5,7 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
-import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.anonymous.base.common.web.mapper.SysDepartmentMapper;
 
 /**
  * <p>
@@ -23,6 +24,9 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 <#else>
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}Entity> implements ${table.serviceName} {
 
+    @Autowired
+    ${table.mapperName} mapper;
+
    /**
     * 保存
     *
@@ -30,8 +34,8 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     * @return 保存结果
     */
     @Override
-    public boolean saveOne(${entity}DTO dto) {
-        return this.save(${entity}Convertor.INSTANCE.toEntity(dto));
+    public int insert(${entity}DTO dto) {
+        return mapper.insert(${entity}Convertor.INSTANCE.toEntity(dto));
     }
 
    /**
@@ -41,7 +45,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     * @return VO
     */
     @Override
-    public ${entity}VO getByPk(String pk) {
+    public ${entity}VO selectByPk(String pk) {
         ${entity}Entity domain = this.getById(pk);
         return ${entity}Convertor.INSTANCE.toVO(domain);
     }
@@ -60,14 +64,17 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
    /**
     * 支持分页的dto条件查询
     *
-    * @param page  分页组件
     * @param dto 查询参数
     * @return IPage
     */
     @Override
-    public IPage<${entity}VO> selectPageByDto(IPage<${entity}Entity> page, ${entity}DTO dto) {
+    public IPage<${entity}VO> selectByPage(${entity}DTO dto) {
+        // 构造参数
         QueryWrapper<${entity}Entity> queryWrapper = Wrappers.query();
-        IPage<${entity}Entity> iPage = this.getBaseMapper().selectPage(page, queryWrapper);
+        // 构造分页
+        Page<${entity}Entity> page = new Page<>(dto.getPageNum(), dto.getPageSize());
+        // 查询结果
+        IPage<${entity}Entity> iPage = mapper.selectPage(page, queryWrapper);
         return iPage.convert(${entity}Convertor.INSTANCE::toVO);
     }
 }

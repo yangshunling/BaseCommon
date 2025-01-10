@@ -35,7 +35,7 @@ public class MyBatisPlusGenerator {
                         .serviceImpl("plugin.generator")
                 )
                 .strategyConfig(builder -> builder
-                        .addInclude("sys_user")
+                        .addInclude("sys_department")
                         .entityBuilder()
                         .enableLombok()
                         .enableTableFieldAnnotation()

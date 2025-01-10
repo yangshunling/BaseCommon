@@ -1,20 +1,20 @@
 package ${package.Entity};
 
 <#list table.importPackages as pkg>
-    import ${pkg};
+import ${pkg};
 </#list>
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
-* <p>
-    * VO
-    * </p>
-*
-* @author ${author}
-* @since ${date}
-*/
+ * <p>
+ * VO
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
 @Data
 public class ${entity}VO {
 

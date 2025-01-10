@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2024/12/13 19:36
  */
 @SpringBootApplication
-@MapperScan("com.anonymous.base.common.mapper")
+@MapperScan("com.anonymous.base.common.web.mapper")
 public class BaseCommonApplication {
 
     public static void main(String[] args) {

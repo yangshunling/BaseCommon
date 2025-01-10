@@ -6,6 +6,7 @@ import ${pkg};
 import com.anonymous.base.common.base.BasePageParam;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * <p>
@@ -15,8 +16,9 @@ import lombok.Data;
  * @author ${author}
  * @since ${date}
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ${entity}DTO extends BasePage {
+public class ${entity}DTO extends BasePageParam {
 
 <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list table.fields as field>

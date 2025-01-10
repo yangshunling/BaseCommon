@@ -1,50 +1,37 @@
-package ${package.Controller};
+package com.anonymous.base.common.web.controller;
 
-import com.anonymous.base.common.web.model.request.HttpResponse;
+import com.anonymous.base.common.web.service.ISysDepartmentService;
 import com.anonymous.base.common.utils.ResultUtils;
+import com.anonymous.base.common.web.model.dto.SysDepartmentDTO;
+import com.anonymous.base.common.web.model.entity.SysDepartmentEntity;
+import com.anonymous.base.common.web.model.request.HttpResponse;
+import com.anonymous.base.common.web.model.vo.SysDepartmentVO;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.constraints.NotEmpty;
-<#if restControllerStyle>
     import org.springframework.web.bind.annotation.RestController;
-<#else>
-    import org.springframework.stereotype.Controller;
-</#if>
-<#if superControllerClassPackage??>
-    import ${superControllerClassPackage};
-</#if>
 
 /**
  * <p>
- * ${table.comment!} 前端控制器
+ * 部门表 前端控制器
  * </p>
  *
- * @author ${author}
- * @since ${date}
+ * @author Anonymous
+ * @since 2025-01-10 13:56:13
  */
-<#if restControllerStyle>
 @RestController
-<#else>
-@Controller
-</#if>
-@RequestMapping("<#if package.ModuleName?? && package.ModuleName != "">/${package.ModuleName}</#if>/<#if controllerMappingHyphenStyle??>${controllerMappingHyphen}<#else>${table.entityPath}</#if>")
-<#if kotlin>
-class ${table.controllerName}<#if superControllerClass??> : ${superControllerClass}()</#if>
-<#else>
-<#if superControllerClass??>
-    public class ${table.controllerName} extends ${superControllerClass} {
-<#else>
-public class ${table.controllerName} {
-</#if>
+@RequestMapping("/sys-department")
+public class SysDepartmentController {
 
     /**
     * service
     */
     @Autowired
-    ${table.serviceName} service;
+    ISysDepartmentService service;
 
     /**
     * 保存
@@ -53,7 +40,7 @@ public class ${table.controllerName} {
     * @return 保存结果
     */
     @PostMapping("/insert")
-    public HttpResponse insert(@Validated ${entity}DTO dto) {
+    public HttpResponse insert(@Validated SysDepartmentDTO dto) {
         return ResultUtils.object(service.insert(dto));
     }
 
@@ -85,9 +72,8 @@ public class ${table.controllerName} {
     * @return BizResult
     */
     @GetMapping("/select")
-    public HttpResponse select(${entity}DTO dto) {
-        IPage<${entity}VO> list = service.selectByPage(dto);
+    public HttpResponse select(SysDepartmentDTO dto) {
+        IPage<SysDepartmentVO> list = service.selectByPage(dto);
         return ResultUtils.list(list.getRecords(), list.getTotal());
     }
 }
-    </#if>

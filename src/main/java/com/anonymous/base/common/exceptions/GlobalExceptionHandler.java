@@ -1,6 +1,6 @@
 package com.anonymous.base.common.exceptions;
 
-import com.anonymous.base.common.model.request.HttpResponse;
+import com.anonymous.base.common.web.model.request.HttpResponse;
 import com.anonymous.base.common.utils.ResultUtils;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.web.bind.MethodArgumentNotValidException;
