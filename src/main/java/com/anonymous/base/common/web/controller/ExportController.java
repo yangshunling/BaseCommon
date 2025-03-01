@@ -1,6 +1,6 @@
 package com.anonymous.base.common.web.controller;
 
-import com.alibaba.excel.EasyExcel;
+import cn.idev.excel.EasyExcel;
 import com.anonymous.base.common.handler.BaseCellStyleHandler;
 import com.anonymous.base.common.web.model.data.ExportData;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,18 +25,18 @@ public class ExportController {
 
     @GetMapping("/export")
     public void exportExcel(HttpServletResponse response) throws IOException {
-        // 设置响应头
-        response.setContentType("application/vnd.ms-excel");
-        response.setCharacterEncoding("utf-8");
-        String fileName = URLEncoder.encode("用户数据表", "UTF-8");
-        response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
-
         // 模拟数据
         List<ExportData> dataList = new ArrayList<>();
         dataList.add(new ExportData(1L, "张三", 25, "销售部"));
         dataList.add(new ExportData(2L, "李四", 30, "技术部"));
         dataList.add(new ExportData(3L, "王五", 28, "市场部"));
         dataList.add(new ExportData(4L, "赵六", 35, "管理部"));
+
+        // 设置响应头
+        response.setContentType("application/vnd.ms-excel");
+        response.setCharacterEncoding("utf-8");
+        String fileName = URLEncoder.encode("用户数据表", "UTF-8");
+        response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
 
         // 导出 Excel
         EasyExcel.write(response.getOutputStream(), ExportData.class)

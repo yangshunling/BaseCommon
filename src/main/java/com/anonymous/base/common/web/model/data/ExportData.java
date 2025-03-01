@@ -1,8 +1,7 @@
 package com.anonymous.base.common.web.model.data;
 
-import com.alibaba.excel.annotation.ExcelProperty;
-import com.alibaba.excel.annotation.write.style.HeadRowHeight;
-import com.alibaba.excel.annotation.write.style.HeadStyle;
+import cn.idev.excel.annotation.ExcelProperty;
+import cn.idev.excel.annotation.write.style.HeadRowHeight;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

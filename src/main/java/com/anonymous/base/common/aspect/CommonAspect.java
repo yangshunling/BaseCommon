@@ -2,7 +2,7 @@ package com.anonymous.base.common.aspect;
 
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.JSON;
+import java.util.Arrays;
 import com.anonymous.base.common.constant.CommonConstant;
 import com.anonymous.base.common.exceptions.CommonException;
 import lombok.extern.slf4j.Slf4j;
@@ -59,7 +59,7 @@ public class CommonAspect {
         // 打印请求的 IP
         log.info("IP             : {}", request.getRemoteAddr());
         // 打印请求入参
-        log.info("Request Args   : {}", joinPoint.getArgs() == null ? "No arguments" : JSON.toJSONString(joinPoint.getArgs()));
+        log.info("Request Args   : {}", Arrays.toString(joinPoint.getArgs()));
         //请求头
         String token = request.getHeader("Authorization");
         log.info("token          : {}", token);

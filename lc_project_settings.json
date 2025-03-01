@@ -1,0 +1,8 @@
+{
+  "contentEnhanceSetting" : {
+    "resourceFilterList" : [ {
+      "language" : "java",
+      "prefixList" : [ "com.hundsun." ]
+    } ]
+  }
+}
